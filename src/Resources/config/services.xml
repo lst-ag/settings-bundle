@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+
+        <service id="lst_settings.repository.setting_repository" class="LST\SettingsBundle\Repository\SettingRepository">
+            <factory service="doctrine.orm.entity_manager" method="getRepository" />
+            <argument>LST\SettingsBundle\Entity\Setting</argument>
+        </service>
+
+        <service id="lst_settings.settings_manager" class="LST\SettingsBundle\SettingsManager">
+            <argument type="service" id="lst_settings.repository.setting_repository" />
+            <argument type="service" id="doctrine.orm.metadata.annotation_reader" />
+        </service>
+
+        <service id="LST\SettingsBundle\SettingsManagerInterface" alias="lst_settings.settings_manager" />
+        <service id="LST\SettingsBundle\Entity\Setting" />
+
+    </services>
+
+</container>

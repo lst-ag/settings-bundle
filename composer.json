@@ -1,0 +1,20 @@
+{
+  "name": "lst/settings-bundle",
+  "type": "symfony-bundle",
+  "description": "Settings bundle",
+  "homepage": "https://www.lst.team",
+  "license": "MIT",
+  "authors": [
+    { "name": "Christian Fries", "email": "christian.fries@lst.team" }
+  ],
+  "require": {
+    "php": "^7.2",
+    "doctrine/orm": "^2.0",
+    "symfony/framework-bundle": "^4.4"
+  },
+  "autoload": {
+    "psr-4": {
+      "LST\\SettingsBundle\\": "src/"
+    }
+  }
+}
