@@ -18,7 +18,7 @@ class Setting
      * @ORM\Column(type="string")
      * @ORM\Id
      */
-    protected $topic;
+    protected $category;
 
     /**
      * @var string
@@ -31,19 +31,20 @@ class Setting
 
     /**
      * @var string
+     *
      * @ORM\Column(type="text")
      */
     protected $value;
 
-    public function __construct(string $topic, string $property)
+    public function __construct(string $category, string $property)
     {
-        $this->topic = $topic;
+        $this->category = $category;
         $this->property = $property;
     }
 
-    public function getTopic(): string
+    public function getCategory(): string
     {
-        return $this->topic;
+        return $this->category;
     }
 
     public function getProperty(): string

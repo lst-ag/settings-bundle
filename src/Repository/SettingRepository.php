@@ -11,9 +11,9 @@ class SettingRepository extends EntityRepository
     /**
      * @throws SettingNotFoundException
      */
-    public function get(string $topic, string $property, $failSilently = true): string
+    public function fetchProperty(string $category, string $property, $failSilently = true): string
     {
-        $setting = $this->findOneBy(['topic' => $topic, 'property' => $property]);
+        $setting = $this->findOneBy(['category' => $category, 'property' => $property]);
 
         if (null === $setting) {
             if ($failSilently) {
@@ -25,22 +25,22 @@ class SettingRepository extends EntityRepository
         return $setting->getValue();
     }
 
-    public function set(string $group, string $key, string $value): bool
+    public function persistProperty(string $category, string $key, string $value): bool
     {
-        $setting = $this->findOneBy(['topic' => $group, 'property' => $key]);
+        $setting = $this->findOneBy(['category' => $category, 'property' => $key]);
 
         if (null === $setting) {
-            $setting = new Setting($group, $key);
+            $setting = new Setting($category, $key);
         }
 
         $setting->setValue($value);
 
-//        try {
-        $this->_em->persist($setting);
-        $this->_em->flush($setting);
-//        } catch (\Exception $e) {
-//            return false;
-//        }
+        try {
+            $this->_em->persist($setting);
+            $this->_em->flush($setting);
+        } catch (\Exception $e) {
+            return false;
+        }
 
         return true;
     }

@@ -31,17 +31,17 @@ class SettingsManager implements SettingsManagerInterface
      *
      * @throws Exception\SettingNotFoundException
      */
-    public function fetchProperty(string $topic, string $property): string
+    public function fetchProperty(string $category, string $property): string
     {
-        return $this->settingRepository->get($topic, $property);
+        return $this->settingRepository->fetchProperty($category, $property);
     }
 
     /**
      * Persist a single setting.
      */
-    public function persistProperty(string $topic, string $property, string $value)
+    public function persistProperty(string $category, string $property, string $value)
     {
-        return $this->settingRepository->set($topic, $property, $value);
+        return $this->settingRepository->persistProperty($category, $property, $value);
     }
 
     /**
