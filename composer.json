@@ -8,9 +8,9 @@
     { "name": "Christian Fries", "email": "christian.fries@lst.team" }
   ],
   "require": {
-    "php": "^7.2",
+    "php": "^7.4 || ^8.0",
     "doctrine/orm": "^2.0",
-    "symfony/framework-bundle": "^4.4"
+    "symfony/framework-bundle": "^4.4 || ^5.4"
   },
   "autoload": {
     "psr-4": {
